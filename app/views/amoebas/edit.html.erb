@@ -6,7 +6,7 @@
     <%= f.label(:talent) %>
 
       <select id="lives" name="amoeba[talent]">
-          <option selected="<%= @amoeba.talent.id %>"><%= @amoeba.talent.name.titleize %></option>
+          <option selected="<%= @amoeba.talent.id %>" value="<%= @amoeba.talent.id %>"><%= @amoeba.talent.name.titleize %></option>
         <% @talents.each do |talent| %>
           <% if talent.id != @amoeba.talent.id %>
             <option value="<%= talent.id %>"><%= talent.name.titleize %></option>
