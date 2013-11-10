@@ -44,7 +44,6 @@
 ## seems like this is two separate problems generation, and then the other stuff
 ## dont worry about the generation number problem for now... will either behandled in the model or the controller
 
-
 Talent.create(name: "acrobat")
 Talent.create(name: "contortionist")
 Talent.create(name: "clown")
