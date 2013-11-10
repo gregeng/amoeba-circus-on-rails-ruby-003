@@ -1,4 +1,4 @@
-<h3>Spawn a New Amoeba</h3>
+<h3>Edit <%= @amoeba.name %></h3>
 
 <%= form_for(@amoeba) do |f| %>
     <%= f.label(:name) %>
@@ -6,8 +6,11 @@
     <%= f.label(:talent) %>
 
       <select id="lives" name="amoeba[talent]">
+          <option selected="<%= @amoeba.talent.id %>"><%= @amoeba.talent.name.titleize %></option>
         <% @talents.each do |talent| %>
-           <option value="<%= talent.id %>"><%= talent.name.titleize %></option>
+          <% if talent.id != @amoeba.talent.id %>
+            <option value="<%= talent.id %>"><%= talent.name.titleize %></option>
+          <% end %>
         <% end %>
       </select>
 
@@ -16,13 +19,14 @@
     <% @acts.each do |act| %>
         <div>
         <%= link_to act.name.titleize, act_path(act) %><br>
-        <%= check_box_tag 'amoeba[acts][]', act.id, false, :id => act.name %>
+        <%= check_box_tag 'amoeba[acts][]', act.id, @amoeba.acts.include?(act), :id => act.name %>
         </div>
         <br>
     <% end %>
     </ul>
 
     <%= f.hidden_field :generation, value: 1 %>
+    <%= f.hidden_field :id %>
 
   <div class="actions">
     <%= f.submit %>
