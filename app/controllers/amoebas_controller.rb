@@ -37,6 +37,8 @@ class AmoebasController < ApplicationController
 
   # GET /amoebas/1/edit
   def edit
+    @talents = Talent.all
+    @acts = Act.all
   end
 
   # GET /amoebas/split_new
