@@ -2,12 +2,12 @@
 
 <h4>Date:</h4>
 <ul>
-  <%= @act.date %>
+  <%= @act.date.to_formatted_s(:long) %>
 </ul>
 
 <h4>Time:</h4>
 <ul>
-  <%= @act.time %>
+  <%= @act.time.to_formatted_s(:time)  %>
 </ul>
 
 <h4>Associated Amoebas:</h4>
