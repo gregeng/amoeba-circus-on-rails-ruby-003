@@ -1,0 +1,33 @@
+<h3>Spawn a New Amoeba</h3>
+
+<%= form_for(@amoeba) do |f| %>
+    <%= f.label(:name) %>
+    <%= f.text_field :name %>
+    <%= f.label(:talent) %>
+
+      <select id="lives" name="amoeba[talent]">
+        <% @talents.each do |talent| %>
+           <option value="<%= talent.id %>"><%= talent.name.titleize %></option>
+        <% end %>
+      </select>
+
+    <%= f.label(:acts) %>
+    <ul>
+    <% @acts.each do |act| %>
+        <div>
+        <%= label_tag act.name %>
+        <%= check_box_tag 'amoeba[acts][]', act.id, false, :id => act.name %>
+        </div>
+        <br>
+    <% end %>
+    </ul>
+
+    <%= f.hidden_field :generation, value: 1 %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Back', amoebas_path %>

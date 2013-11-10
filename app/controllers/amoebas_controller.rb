@@ -12,6 +12,8 @@ class AmoebasController < ApplicationController
   # GET /amoebas/new
   def new
     @amoeba = Amoeba.new
+    @talents = Talent.all
+    @acts = Act.all
   end
 
   # GET /amoebas/1/edit
@@ -22,6 +24,7 @@ class AmoebasController < ApplicationController
   def split_new
     @amoeba  = Amoeba.new
     @amoeba2 = Amoeba.new
+    render template: "amoebas/split_new"
   end
 
   # POST /amoebas  ### I probably need to come up with some inheritance logic in the params, as well as the destroying of the parent amoeba

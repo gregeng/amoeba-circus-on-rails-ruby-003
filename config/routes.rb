@@ -1,9 +1,10 @@
 AmoebaCircusOnRailsRuby003::Application.routes.draw do
+  get '/amoebas/split_new' => 'amoebas#split_new'
+
   resources :acts
   resources :amoeba_acts
   resources :amoebas
 
-  get '/amoebas/split_new' => 'amoebas#split_new'
   post '/amoebas' => 'amoebas#split_create'
 
   # The priority is based upon order of creation: first created -> highest priority.
