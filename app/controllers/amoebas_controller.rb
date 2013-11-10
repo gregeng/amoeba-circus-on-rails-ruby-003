@@ -16,6 +16,25 @@ class AmoebasController < ApplicationController
     @acts = Act.all
   end
 
+  # POST /amoebas
+  def create
+    ### I'm not sure how to mass assign when we have to use checkboxes.
+    act_ids = params[:amoeba][:acts]
+    act_objects = Act.find_acts(act_ids)
+
+    @amoeba = Amoeba.new
+    @amoeba.name = params[:amoeba][:name]
+    @amoeba.talent = Talent.find(params[:amoeba][:talent])
+    @amoeba.generation = params[:amoeba][:generation]
+    @amoeba.acts = act_objects
+
+    if @amoeba.save
+      redirect_to @amoeba
+    else
+      render action: 'new'
+    end
+  end
+
   # GET /amoebas/1/edit
   def edit
   end
@@ -41,16 +60,7 @@ class AmoebasController < ApplicationController
 
 
 
-  # Amoeba /amoebas
-  def create
-    @amoeba = Amoeba.new(amoeba_params)
 
-    if @amoeba.save
-      redirect_to @amoeba
-    else
-      render action: 'new'
-    end
-  end
 
   # PATCH/PUT /amoebas/1
   def update
@@ -76,7 +86,7 @@ class AmoebasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def amoeba_params
-      params.require(:amoeba).permit(:name, :talent_id, :generation)
+      params.require(:amoeba).permit(:name, :talent, :acts, :generation)
     end
 end
 
