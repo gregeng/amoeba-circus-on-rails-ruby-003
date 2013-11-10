@@ -8,5 +8,11 @@ class ActsController < ApplicationController
     @act = Act.find(params[:id])
   end
 
+  def new
+    @amoebas = Amoeba.all
+    @act = Act.new
+  end
+
+
 
 end

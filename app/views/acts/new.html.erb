@@ -1,0 +1,28 @@
+<h3>Create a new Act</h3>
+
+<%= form_for(@act) do |f| %>
+    <%= f.label(:name) %>
+    <%= f.text_field :name %>
+    <%= f.label(:date) %>
+    <%= f.date_select :date %>
+    <%= f.label(:time) %>
+    <%= f.time_select :time %>
+
+    <%= f.label(:amoebas) %>
+    <ul>
+    <% @amoebas.each do |amoeba| %>
+        <div>
+        <%= link_to amoeba.name.titleize, amoeba_path(amoeba) %><br>
+        <%= check_box_tag 'acts[amoebas][]', amoeba.id, false, :id => amoeba.name %>
+        </div>
+        <br>
+    <% end %>
+    </ul>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Back', acts_path %>
