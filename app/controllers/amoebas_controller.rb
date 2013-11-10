@@ -18,7 +18,7 @@ class AmoebasController < ApplicationController
   def edit
   end
 
-  # GET /amoebas/1/split_new
+  # GET /amoebas/split_new
   def split_new
     @amoeba  = Amoeba.new
     @amoeba2 = Amoeba.new
