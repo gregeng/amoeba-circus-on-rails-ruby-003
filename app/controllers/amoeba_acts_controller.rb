@@ -1,0 +1,2 @@
+class AmoebaActsController < ApplicationController
+end
