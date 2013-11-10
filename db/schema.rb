@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131110020952) do
+ActiveRecord::Schema.define(version: 20131110052050) do
 
   create_table "acts", force: true do |t|
     t.string   "name"
@@ -40,6 +40,11 @@ ActiveRecord::Schema.define(version: 20131110020952) do
   end
 
   add_index "amoebas", ["talent_id"], name: "index_amoebas_on_talent_id"
+
+  create_table "dashboards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "talents", force: true do |t|
     t.string   "name"
