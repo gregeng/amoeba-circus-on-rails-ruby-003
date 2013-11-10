@@ -1,0 +1,13 @@
+<h3>Amoebas:</h3>
+
+  <ul>
+    <% @amoebas.each do |amoeba| %>
+
+        <li><%= link_to amoeba.name, amoeba %></li>
+
+    <% end %>
+  </ul>
+
+<br>
+
+<%= link_to 'New Amoeba', new_amoeba_path %>
