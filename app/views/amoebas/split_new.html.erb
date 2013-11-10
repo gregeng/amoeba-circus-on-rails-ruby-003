@@ -3,9 +3,15 @@
 
 
   <%= form_tag('/split_amoebas', method: :post) %>
+    <%= hidden_field_tag 'parent[id]', @parent.id %>
+
     <h4>New Amoeba 1:</h4>
       <%= label_tag(:name) %>
       <%= text_field_tag 'amoeba[name]' %>
+      <%= label_tag('Inherited Talent') %>
+      <ul>
+      <li><%= @parent.talent.name.titleize %></li>
+      </ul>
       <%= hidden_field_tag('amoeba[talent]', @parent.talent.id ) %>
       <%= label_tag(:acts) %>
       <ul>
@@ -23,6 +29,10 @@
     <h4>New Amoeba 2:</h4>
       <%= label_tag(:name) %>
       <%= text_field_tag 'amoeba2[name]' %>
+      <%= label_tag('Inherited Talent') %>
+      <ul>
+      <li><%= @parent.talent.name.titleize %></li>
+      </ul>
       <%= hidden_field_tag('amoeba2[talent]', @parent.talent.id ) %>
       <%= label_tag(:acts) %>
       <ul>

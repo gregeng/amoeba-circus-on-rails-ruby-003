@@ -51,6 +51,7 @@ class AmoebasController < ApplicationController
 
   # POST /amoebas  ### I probably need to come up with some inheritance logic in the params, as well as the destroying of the parent amoeba
   def split_create
+    @parent = Amoeba.find(params[:parent][:id])
 
     act_ids = params[:amoeba][:acts]
     act_objects = Act.find_acts(act_ids)
@@ -71,6 +72,7 @@ class AmoebasController < ApplicationController
     @amoeba2.acts = act_objects2
 
     if @amoeba.save && @amoeba2.save
+      @parent.destroy
       redirect_to amoebas_path
     else
       render text: "Error!"
