@@ -60,13 +60,18 @@ class AmoebasController < ApplicationController
     end
   end
 
-
-
-
-
   # PATCH/PUT /amoebas/1
   def update
-    if @amoeba.update(amoeba_params)
+    act_ids = params[:amoeba][:acts]
+    act_objects = Act.find_acts(act_ids)
+
+    @amoeba = Amoeba.find(params[:amoeba][:id])
+    @amoeba.name = params[:amoeba][:name]
+    @amoeba.talent = Talent.find(params[:amoeba][:talent])
+    @amoeba.generation = params[:amoeba][:generation]
+    @amoeba.acts = act_objects
+
+    if @amoeba.save
       redirect_to @amoeba
     else
       render action: 'edit'
