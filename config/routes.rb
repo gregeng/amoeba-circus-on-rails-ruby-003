@@ -1,18 +1,18 @@
 AmoebaCircusOnRailsRuby003::Application.routes.draw do
-
-  get '/amoebas/split_new' => 'amoebas#split_new'
+  root 'dashboard#index'
 
   resources :acts
   resources :amoeba_acts
   resources :amoebas
 
-  post '/amoebas' => 'amoebas#split_create'
+  get  '/amoebas/:id/split_new' => 'amoebas#split_new', as: :amoebas_split_new
+  post '/split_amoebas' => 'amoebas#split_create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'dashboard#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,0 +1,46 @@
+<h3>Split <%= @parent.name %></h3>
+<br>
+
+
+  <%= form_tag('/split_amoebas', method: :post) %>
+    <h4>New Amoeba 1:</h4>
+      <%= label_tag(:name) %>
+      <%= text_field_tag 'amoeba[name]' %>
+      <%= hidden_field_tag('amoeba[talent]', @parent.talent.id ) %>
+      <%= label_tag(:acts) %>
+      <ul>
+      <% @acts.each do |act| %>
+          <div>
+          <%= link_to act.name.titleize, act_path(act) %><br>
+          <%= check_box_tag 'amoeba[acts][]', act.id, false, :id => act.name %>
+          </div>
+          <br>
+        <% end %>
+      </ul>
+
+      <%= hidden_field_tag 'amoeba[generation]', @parent.generation.to_i+1 %>
+
+    <h4>New Amoeba 2:</h4>
+      <%= label_tag(:name) %>
+      <%= text_field_tag 'amoeba2[name]' %>
+      <%= hidden_field_tag('amoeba2[talent]', @parent.talent.id ) %>
+      <%= label_tag(:acts) %>
+      <ul>
+      <% @acts.each do |act| %>
+          <div>
+          <%= link_to act.name.titleize, act_path(act) %><br>
+          <%= check_box_tag 'amoeba2[acts][]', act.id, false, :id => act.name %>
+          </div>
+          <br>
+        <% end %>
+      </ul>
+
+      <%= hidden_field_tag 'amoeba2[generation]', @parent.generation.to_i+1 %>
+
+    <div class="actions">
+      <%= submit_tag "Split!" %>
+    </div>
+  </form>
+
+
+<%= link_to 'Back', amoebas_path %>

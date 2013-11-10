@@ -41,22 +41,39 @@ class AmoebasController < ApplicationController
     @acts = Act.all
   end
 
-  # GET /amoebas/split_new
+  # GET /amoebas/:id/split_new
   def split_new
+    @parent = Amoeba.find(params[:id])
+    @acts = Act.all
     @amoeba  = Amoeba.new
-    @amoeba2 = Amoeba.new
     render template: "amoebas/split_new"
   end
 
   # POST /amoebas  ### I probably need to come up with some inheritance logic in the params, as well as the destroying of the parent amoeba
   def split_create
-    @amoeba  = Amoeba.new(amoeba_params)
-    @amoeba2 = Amoeba.new(amoeba_params)
+
+    act_ids = params[:amoeba][:acts]
+    act_objects = Act.find_acts(act_ids)
+
+    @amoeba = Amoeba.new
+    @amoeba.name = params[:amoeba][:name]
+    @amoeba.talent = Talent.find(params[:amoeba][:talent])
+    @amoeba.generation = params[:amoeba][:generation]
+    @amoeba.acts = act_objects
+
+    act_ids2 = params[:amoeba2][:acts]
+    act_objects2 = Act.find_acts(act_ids2)
+
+    @amoeba2 = Amoeba.new
+    @amoeba2.name = params[:amoeba2][:name]
+    @amoeba2.talent = Talent.find(params[:amoeba2][:talent])
+    @amoeba2.generation = params[:amoeba2][:generation]
+    @amoeba2.acts = act_objects2
 
     if @amoeba.save && @amoeba2.save
       redirect_to amoebas_path
     else
-      "Error!"
+      render text: "Error!"
     end
   end
 
@@ -93,7 +110,7 @@ class AmoebasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def amoeba_params
-      params.require(:amoeba).permit(:name, :talent, :acts, :generation)
+      params.require(:amoeba, :amoeba2).permit(:name, :talent, :acts, :generation)
     end
 end
 
