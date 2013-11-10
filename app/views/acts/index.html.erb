@@ -1,1 +1,13 @@
-index.html.erb
+<h3>Acts:</h3>
+
+  <ul>
+    <% @acts.each do |act| %>
+
+        <li><%= link_to act.name.titleize, act %></li>
+
+    <% end %>
+  </ul>
+
+<br>
+
+<%= link_to 'New Act', new_act_path %>
