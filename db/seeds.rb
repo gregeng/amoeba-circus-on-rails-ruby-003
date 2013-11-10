@@ -28,12 +28,6 @@
 ## Talent
 # talent has many amoebas
 
-Talent.create(name: "acrobat")
-Talent.create(name: "contortionist")
-Talent.create(name: "clown")
-Talent.create(name: "juggler")
-Talent.create(name: "freak")
-
 # amoeba_acts
 
 # belongs_to amoeba
@@ -48,3 +42,62 @@ Talent.create(name: "freak")
 # act has many amoeba_acts
 
 ## seems like this is two separate problems generation, and then the other stuff
+## dont worry about the generation number problem for now... will either behandled in the model or the controller
+
+
+Talent.create(name: "acrobat")
+Talent.create(name: "contortionist")
+Talent.create(name: "clown")
+Talent.create(name: "juggler")
+Talent.create(name: "freak")
+
+audrey = Amoeba.new
+audrey.name = "Audrey"
+audrey.generation = 1
+audrey.talent = Talent.find(1)
+audrey.save
+
+greg = Amoeba.new
+greg.name = "Greg"
+greg.generation = 1
+greg.talent = Talent.find(2)
+greg.save
+
+jon = Amoeba.new
+jon.name = "Jon"
+jon.generation = 1
+jon.talent = Talent.find(3)
+jon.save
+
+scott = Amoeba.new
+scott.name = "Scott"
+scott.generation = 1
+scott.talent = Talent.find(4)
+scott.save
+
+spencer = Amoeba.new
+spencer.name = "Spencer"
+spencer.generation = 1
+spencer.talent = Talent.find(5)
+spencer.save
+
+plate_spinning = Act.create(name: "plate-spinning", date: Time.now.strftime("%Y-%m-%d") , time: Time.now.strftime("%H:%M"))
+plate_spinning.amoebas = Amoeba.all.shuffle[0..2]
+plate_spinning.save
+
+juggling = Act.create(name: "juggling", date: Time.now.strftime("%Y-%m-%d") , time: Time.now.strftime("%H:%M"))
+juggling.amoebas = Amoeba.all.shuffle[0..2]
+juggling.save
+
+gymnastics = Act.create(name: "gymnastics", date: Time.now.strftime("%Y-%m-%d") , time: Time.now.strftime("%H:%M"))
+gymnastics.amoebas = Amoeba.all
+gymnastics.save
+
+daredevils = Act.create(name: "daredevils", date: Time.now.strftime("%Y-%m-%d") , time: Time.now.strftime("%H:%M"))
+daredevils.amoebas = Amoeba.all.shuffle[0..3]
+daredevils.save
+
+tightrope = Act.create(name: "tightrope", date: Time.now.strftime("%Y-%m-%d") , time: Time.now.strftime("%H:%M"))
+tightrope.amoebas = Amoeba.all.shuffle[0..3]
+tightrope.save
+
