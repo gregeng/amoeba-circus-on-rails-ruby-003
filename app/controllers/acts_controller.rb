@@ -68,14 +68,17 @@ class ActsController < ApplicationController
     Rails.logger.info("PARAMS: #{params.inspect}")
     # {"tasks"=>{"0"=>{"task_id"=>"2"}, "1"=>{"task_id"=>"1"}, "2"=>{"task_id"=>"3"}}}
 
-    # params[:tasks].each do |index, task|
-    #   task = Task.find_by_id(task[:task_id])
-    #   task.position = index.to_i + 1
-    #   task.save
-    # end
+    # {"amoebas"=>{"1"=>{"amoeba_id"=>"1"}, "2"=>{"amoeba_id"=>"1"}, "3"=>{"amoeba_id"=>"3"}}, "controller"=>"acts", "action"=>"ajax"}
+    @act = Act.all.find(params[:act_id])
 
-    # tasks = Task.order('position ASC') #re-order
-    # render :json => tasks
+    params[:amoebas].each do |index, amoeba|
+      amoeba = Amoeba.all.find(amoeba[:amoeba_id])
+      @act.amoebas << amoeba if !@act.amoebas.include?(amoeba)
+    end
+
+    all_amoebas = @act.amoebas
+    render :json => all_amoebas
+
   end
 
 

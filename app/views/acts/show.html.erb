@@ -6,6 +6,7 @@
 
 
 <h3><%= @act.name.titleize %></h3>
+<h3 hidden="true" id="act_id" value="<%= @act.id %>"><%= @act.id %></h3>
 
 <h4>Date:</h4>
 <ul>
@@ -18,7 +19,7 @@
 </ul>
 
 <h4>Associated Amoebas:</h4>
-<ul>
+<ul id="associated">
   <% @act.amoebas.each do |amoeba| %>
   <li><%= link_to amoeba.name.titleize, amoeba_path(amoeba) %></li>
   <% end %>
@@ -37,7 +38,7 @@
       <ul>
         <% @amoebas.each do |amoeba| %>
           <% if !@act.amoebas.include?(amoeba) %>
-            <li data-id="<%= amoeba.id %>" class="position" id="<%= amoeba.id %>"><%= amoeba.name %></li>
+            <li data-id="<%= amoeba.id %>" class="position" id="<%= amoeba.id %>"value="<%= amoeba.name %>"><%= amoeba.name %></li>
           <% end %>
         <% end %>
       </ul>
