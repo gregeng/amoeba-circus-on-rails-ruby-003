@@ -1,3 +1,12 @@
+<style>
+    h1 { padding: .2em; margin: 0; }
+    #products { float:left; width: 500px; margin-right: 2em; }
+    #cart { width: 200px; float: left; margin-top: 1em; }
+    /* style the list to maximize the droppable hitarea */
+    #cart ol { margin: 0; padding: 1em 0 1em 3em; }
+</style>
+
+
 <h3><%= @act.name.titleize %></h3>
 
 <h4>Date:</h4>
@@ -20,3 +29,27 @@
 <%= link_to "Edit This Act", edit_act_path(@act) %>    |
 <%= link_to "Cancel #{@act.name.titleize}", @act, method: :delete %><br><br>
 <%= link_to 'Back', acts_path %>
+
+
+
+<div id="products">
+  <h4 class="ui-widget-header">Amoebas</h4>
+  <div id="catalog">
+    <h2><a href="#">T-Shirts</a></h2>
+    <div>
+      <ul>
+        <li>Lolcat Shirt</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div id="cart">
+  <h4 class="ui-widget-header">Act</h4>
+  <div class="ui-widget-content">
+    <ol>
+      <li class="placeholder">Add your items here</li>
+    </ol>
+  </div>
+</div>
