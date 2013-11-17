@@ -37,7 +37,7 @@
       <ul>
         <% @amoebas.each do |amoeba| %>
           <% if !@act.amoebas.include?(amoeba) %>
-            <li><%= amoeba.name %>
+            <li data-id="<%= amoeba.id %>" class="position" id="<%= amoeba.id %>"><%= amoeba.name %></li>
           <% end %>
         <% end %>
       </ul>
@@ -48,7 +48,7 @@
 <div id="cart">
   <h4 class="ui-widget-header">Act</h4>
   <div class="ui-widget-content">
-    <ul>
+    <ul id="new_amoebas">
         <li class="placeholder">Drag Amoebas Here to Add Them to the Act!</li>
     </ul>
   </div>

@@ -64,6 +64,21 @@ class ActsController < ApplicationController
     redirect_to acts_url
   end
 
+  def ajax
+    Rails.logger.info("PARAMS: #{params.inspect}")
+    # {"tasks"=>{"0"=>{"task_id"=>"2"}, "1"=>{"task_id"=>"1"}, "2"=>{"task_id"=>"3"}}}
+
+    # params[:tasks].each do |index, task|
+    #   task = Task.find_by_id(task[:task_id])
+    #   task.position = index.to_i + 1
+    #   task.save
+    # end
+
+    # tasks = Task.order('position ASC') #re-order
+    # render :json => tasks
+  end
+
+
 
   private
     # Never trust parameters from the scary internet, only allow the white list through.

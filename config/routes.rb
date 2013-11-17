@@ -7,6 +7,7 @@ AmoebaCircusOnRailsRuby003::Application.routes.draw do
 
   get  '/amoebas/:id/split_new' => 'amoebas#split_new', as: :amoebas_split_new
   post '/split_amoebas' => 'amoebas#split_create'
+  post "/acts_ajax" => "acts#ajax" #ajax post route
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
