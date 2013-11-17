@@ -4,6 +4,10 @@
 
 $(function() {
 
+  $("#products h4").click(function(){
+    $("#avail-amoebas").slideToggle(200);
+  });
+
   $( "#catalog li" ).draggable({
     appendTo: "body",
     helper: "clone"
@@ -48,6 +52,7 @@ $(function() {
 
     $('#new_amoebas').html('<li class="placeholder">Drag Amoebas Here to Add Them to the Act!</li>');
 
+    $("#avail-amoebas").slideUp(200);
   });
 
 });
