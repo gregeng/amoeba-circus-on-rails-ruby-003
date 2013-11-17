@@ -6,6 +6,7 @@ class ActsController < ApplicationController
 
   def show
     @act = Act.find(params[:id])
+    @amoebas = Amoeba.all
   end
 
   def new

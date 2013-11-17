@@ -1,6 +1,6 @@
 <style>
-    #products { width: 300px; margin-top: 1em; }
-    #cart { width: 300px; margin-top: 1em; }
+    #products { width: 333px; margin-top: 10px; }
+    #cart { width: 333px; margin-top: 10px; }
     /* style the list to maximize the droppable hitarea */
 </style>
 
@@ -35,7 +35,11 @@
   <div id="catalog" class="ui-widget-content">
     <div>
       <ul>
-        <li>Add your items here</li>
+        <% @amoebas.each do |amoeba| %>
+          <% if !@act.amoebas.include?(amoeba) %>
+            <li><%= amoeba.name %>
+          <% end %>
+        <% end %>
       </ul>
     </div>
   </div>
@@ -45,7 +49,9 @@
   <h4 class="ui-widget-header">Act</h4>
   <div class="ui-widget-content">
     <ul>
-      <li class="placeholder">Add Amoebas to this Act</li>
+        <li class="placeholder">Drag Amoebas Here to Add Them to the Act!</li>
     </ul>
   </div>
 </div>
+<br>
+<button id="update_button">Update this Act!</button>
