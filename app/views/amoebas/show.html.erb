@@ -1,22 +1,28 @@
 <h3><%= @amoeba.name %></h3>
 
-<h4>Talent:</h4>
-<ul>
-  <%= @amoeba.talent.name.titleize %>
-</ul>
+<a href="#" id="amoeba_toggle">View More Details >></a>
 
-<h4>Associated Acts:</h4>
-<ul>
-  <% @amoeba.acts.each do |act| %>
-  <li><%= link_to act.name.titleize, act_path(act) %></li>
-  <% end %>
-</ul>
+<div id="amoeba_detail" hidden="true">
+  <h4>Talent:</h4>
+  <ul>
+    <%= @amoeba.talent.name.titleize %>
+  </ul>
 
-<h4>Generation:</h4>
-<ul>
-  <%= @amoeba.generation %>
-</ul>
+  <h4>Associated Acts:</h4>
+  <ul>
+    <% @amoeba.acts.each do |act| %>
+    <li><%= link_to act.name.titleize, act_path(act) %></li>
+    <% end %>
+  </ul>
 
+  <h4>Generation:</h4>
+  <ul>
+    <%= @amoeba.generation %>
+  </ul>
+</div>
+
+<br>
+<br>
 <%= link_to "Edit #{@amoeba.name}'s Circus Cred", edit_amoeba_path(@amoeba) %>    |
 <%= link_to "Split #{@amoeba.name}", amoebas_split_new_path %>  |
 <%= link_to "Destroy #{@amoeba.name}", @amoeba, method: :delete %><br><br>
